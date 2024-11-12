@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
-        adapter = NoteAdapter(noteList, tvNoNotes)
+        adapter = NoteAdapter(noteList, tvNoNotes, this)
         recyclerView.adapter = adapter
 
         databaseReference.addValueEventListener(object: ValueEventListener {
