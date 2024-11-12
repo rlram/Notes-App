@@ -58,13 +58,14 @@ class MainActivity : AppCompatActivity() {
 
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
-        adapter = NoteAdapter(noteList)
+        adapter = NoteAdapter(noteList, tvNoNotes)
         recyclerView.adapter = adapter
 
         databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     progressBar.visibility = View.GONE
+                    noteList.clear()
                     for (item in snapshot.children) {
                         val uId = firebaseAuth.currentUser?.uid.toString()
                         if (item.child("userId").value.toString() == uId) {
