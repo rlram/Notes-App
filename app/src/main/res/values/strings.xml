@@ -15,4 +15,13 @@
     <string name="reset_password">Reset password</string>
     <string name="please_enter_your_email_here">Please enter your email here</string>
     <string name="send">SEND</string>
+    <string name="editicon">editIcon</string>
+    <string name="deleteicon">deleteIcon</string>
+    <string name="create">CREATE</string>
+    <string name="signout">signOut</string>
+    <string name="no_notes">No Notes</string>
+    <string name="iconback">iconBack</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="save">Save</string>
 </resources>
