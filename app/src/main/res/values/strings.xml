@@ -19,4 +19,5 @@
     <string name="deleteicon">deleteIcon</string>
     <string name="create">CREATE</string>
     <string name="signout">signOut</string>
+    <string name="no_notes">No Notes</string>
 </resources>
