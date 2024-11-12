@@ -95,6 +95,16 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        adapter.setOnItemClickListener(object : NoteAdapter.OnClickListener {
+            override fun onClick(position: Int) {
+                val intent = Intent(applicationContext, NoteViewActivity::class.java)
+                intent.putExtra("title", noteList[position].title)
+                intent.putExtra("content", noteList[position].content)
+                startActivity(intent)
+                finish()
+            }
+        })
+
         ivSignOut.setOnClickListener {
             firebaseAuth.signOut()
             val intent = Intent(applicationContext, SignInActivity::class.java)

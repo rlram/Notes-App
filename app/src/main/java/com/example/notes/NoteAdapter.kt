@@ -20,17 +20,24 @@ import org.w3c.dom.Text
 
 class NoteAdapter(private val list: ArrayList<Note>, private val tvNoNotes: TextView, private val context: Context): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
     private val databaseReference = FirebaseDatabase.getInstance().getReference("notes")
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    private lateinit var onClickListener: OnClickListener
+    class ViewHolder(view: View, listener: OnClickListener): RecyclerView.ViewHolder(view) {
         val tvDateTime: TextView = view.findViewById(R.id.tvDateTime)
         val tvTitle: TextView = view.findViewById(R.id.tvTitle)
         val tvContent: TextView = view.findViewById(R.id.tvContent)
         val ivEdit: ImageView = view.findViewById(R.id.ivEdit)
         val ivDelete: ImageView = view.findViewById(R.id.ivDelete)
+
+        init {
+            view.setOnClickListener {
+                listener.onClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_each_note, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onClickListener)
     }
 
     override fun getItemCount(): Int {
@@ -97,5 +104,13 @@ class NoteAdapter(private val list: ArrayList<Note>, private val tvNoNotes: Text
         holder.ivEdit.setOnClickListener {
             dialog.show()
         }
+    }
+
+    interface OnClickListener {
+        fun onClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnClickListener) {
+        this.onClickListener = listener
     }
 }
