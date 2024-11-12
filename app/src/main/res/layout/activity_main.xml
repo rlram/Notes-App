@@ -21,11 +21,11 @@
 
     <ImageView
         android:id="@+id/ivSignOut"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:contentDescription="@string/signout"
         android:src="@drawable/icon_sign_out"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
